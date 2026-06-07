@@ -86,3 +86,59 @@
     transform: scale(1);
   }
 }
+.card {
+  border: none;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(249, 115, 22, 0.25);
+}
+.glow-card {
+  position: relative;
+  padding: 3px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+/* Rotating Glow */
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    transparent,
+    rgba(249, 115, 22, 0.7),
+    transparent,
+    rgba(249, 115, 22, 0.7),
+    transparent
+  );
+
+  animation: rotateGlow 4s linear infinite;
+}
+
+/* Inner Card Layer */
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: white;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.glow-card .card {
+  position: relative;
+  z-index: 2;
+  border: none;
+  border-radius: 20px;
+}
+
+/* Rotation Animation */
+@keyframes rotateGlow {
+  100% {
+    transform: rotate(360deg);
+  }
+}
